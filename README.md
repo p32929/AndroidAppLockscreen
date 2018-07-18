@@ -54,7 +54,7 @@ Step 2: Add ```EasyLock.checkPassword(this);``` in your ```MainActivity``` (or w
 
 ## Set, Check, Change, Disable Password:
 * To set a password, call ```EasyLock.setPassword();```
-* To check password, call ```EasyLock.checkPassword();"```
+* To check password, call ```EasyLock.checkPassword();```
 * To change password, call ```EasyLock.changePassword();```
 * To disable password, call ```EasyLock.disablePassword();```
 
