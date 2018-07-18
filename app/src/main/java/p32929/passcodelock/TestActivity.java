@@ -1,9 +1,10 @@
 package p32929.passcodelock;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TestActivity extends AppCompatActivity {
+import p32929.easypasscodelock.Utils.LockscreenHandler;
+
+public class TestActivity extends LockscreenHandler {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
