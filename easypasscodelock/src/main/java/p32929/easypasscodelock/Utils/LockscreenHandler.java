@@ -28,7 +28,7 @@ public class LockscreenHandler extends AppCompatActivity implements ComponentCal
             ComponentName componentInfo = taskInfo.get(0).topActivity;
             packageName = componentInfo.getPackageName();
         }
-        if (!packageName.equals("com.thamao") && i == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
+        if (!packageName.equals(getPackageName()) && i == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
             // We're in the Background
             wentToBg = true;
             Log.d(TAG, "wentToBg: " + wentToBg);
