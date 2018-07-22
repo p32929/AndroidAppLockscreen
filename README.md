@@ -2,10 +2,10 @@
 An easily implementable, clean, minimal Lockscreen module for Android Apps
 
 # Screenshots
-![screenshot_1532237234](https://user-images.githubusercontent.com/6418354/43042536-7e991234-8da2-11e8-8d17-f15c963a6ad2.png)
 
-![screenshot_1532237239](https://user-images.githubusercontent.com/6418354/43042543-a5326274-8da2-11e8-8a96-31e84eef0c98.png)
-
+Image1                     |  Image2
+:-------------------------:|:-------------------------:
+![screenshot_1532237234](https://user-images.githubusercontent.com/6418354/43042536-7e991234-8da2-11e8-8d17-f15c963a6ad2.png)  | ![screenshot_1532237239](https://user-images.githubusercontent.com/6418354/43042543-a5326274-8da2-11e8-8a96-31e84eef0c98.png)
 
 ## Installation
 Add it in your root build.gradle at the end of repositories:
