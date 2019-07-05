@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import p32929.easypasscodelock.R;
 import p32929.easypasscodelock.Interfaces.ActivityChanger;
+import p32929.easypasscodelock.R;
 import p32929.easypasscodelock.Utils.FayazSP;
 import p32929.easypasscodelock.Utils.LockscreenHandler;
 
@@ -31,7 +31,6 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
     };
 
     private TextView textViewDot, textViewHAHA;
-    public static TextView textViewForgotPass;
     private Button buttonTick;
     private ImageButton imageButtonDelete;
 
@@ -40,7 +39,6 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
 
     //
     private String checkStatus = "check";
-//       private String checkStatus0 = "check0";
     private String setStatus = "set";
     private String setStatus1 = "set1";
     private String disableStatus = "disable";
@@ -69,10 +67,10 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
     }
 
     String tempPass = "";
+
     private void initViews() {
         textViewHAHA = (TextView) findViewById(R.id.haha_text);
         textViewDot = (TextView) findViewById(R.id.dotText);
-        textViewForgotPass = (TextView) findViewById(R.id.forgot_pass_textview);
         buttonTick = (Button) findViewById(R.id.lbtnTick);
         imageButtonDelete = (ImageButton) findViewById(R.id.lbtnDelete);
 
@@ -89,7 +87,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
             @Override
             public void onClick(View view) {
 
-                ///////////////////////////////////
+                //
                 if (status.equals(checkStatus)) {
                     if (passString.equals(realPass)) {
                         finish();
@@ -100,20 +98,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
                     }
                 }
 
-//                else if (status.equals(checkStatus0)) {
-//                    //
-//                    if (passString.equals(realPass)) {
-//                        // TODO: 7/11/18 A locked activity is needed
-//                        finish();
-//                    } else {
-//                        passString = "";
-//                        textViewDot.setText(passString);
-//                        Toast.makeText(LockscreenActivity.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-
-
-                /////////////////////////////////////
+                //
                 else if (status.equals(setStatus)) {
                     //
                     tempPass = passString;
@@ -122,7 +107,10 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
 
                     textViewHAHA.setText("Confirm Password");
                     textViewDot.setText(passString);
-                } else if (status.equals(setStatus1)) {
+                }
+
+                //
+                else if (status.equals(setStatus1)) {
                     //
                     if (passString.equals(tempPass)) {
                         FayazSP.put("password", passString);
@@ -141,8 +129,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
                     }
                 }
 
-
-                ///////////////////////////////////////
+                //
                 else if (status.equals(changeStatus)) {
                     if (passString.equals(realPass)) {
                         tempPass = passString;
@@ -158,6 +145,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
                         Toast.makeText(LockscreenActivity.this, "Please Enter Current Password", Toast.LENGTH_SHORT).show();
                     }
                 }
+
                 //
                 else if (status.equals(changeStatus1)) {
                     tempPass = passString;
@@ -167,6 +155,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
                     textViewHAHA.setText("Confirm Password");
                     textViewDot.setText(passString);
                 }
+
                 //
                 else if (status.equals(changeStatus2)) {
                     if (passString.equals(tempPass)) {
@@ -185,8 +174,6 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
                         Toast.makeText(LockscreenActivity.this, "Please Enter a New Password Again", Toast.LENGTH_SHORT).show();
                     }
                 }
-
-                //////////////////////////////////
 
             }
         });
