@@ -29,10 +29,11 @@ dependencies {
 ## Usage
 Steps to follow:
 * Extend all ``Activities`` by ``LockscreenHandler``
-* Add ```EasyLock.checkPassword(this);``` in your ```MainActivity``` (or whichever activity starts at first)
+* Add ```EasyLock.checkPassword(this);``` in your ```MainActivity```'s ```onCreate``` method (or whichever activity starts at first)
 
 After that you can:
 * Set password
+* Set background color
 * Check password
 * Change password
 * Disable password
@@ -46,7 +47,7 @@ public class MainActivity extends LockscreenHandler {
 }
 ```
 
-Step 2: Add ```EasyLock.checkPassword(this);``` in your ```MainActivity``` (or whichever activity starts at first) like this:
+Step 2: Add ```EasyLock.checkPassword(this);``` in your ```MainActivity```'s ```onCreate``` method (or whichever activity starts at first) like this:
 
 ```
 @Override
@@ -60,13 +61,10 @@ Step 2: Add ```EasyLock.checkPassword(this);``` in your ```MainActivity``` (or w
 
 ## Set, Check, Change, Disable Password:
 * To set a password, call ```EasyLock.setPassword();```
+* To set background color, call ```EasyLock.setBackgroundColor();```
 * To check password, call ```EasyLock.checkPassword();```
 * To change password, call ```EasyLock.changePassword();```
 * To disable password, call ```EasyLock.disablePassword();```
-
-```setPassword```, ```changePassword``` & ```disablePassword``` needs two parameters:
-1st parameter is the ```Context``` & the
-2nd parameter is the ```Activity class``` to go after finising setting, changing or disabling password...
 
 Check out the app in the repository for more info :)
 Enjoy...
