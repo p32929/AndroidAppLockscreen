@@ -7,17 +7,21 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import p32929.easypasscodelock.Interfaces.ActivityChanger;
 import p32929.easypasscodelock.R;
+import p32929.easypasscodelock.Utils.EasyLock;
 import p32929.easypasscodelock.Utils.FayazSP;
 import p32929.easypasscodelock.Utils.LockscreenHandler;
 
 public class LockscreenActivity extends LockscreenHandler implements ActivityChanger {
 
-    private int passButtonIds[] = {
+    private static Class classToGoAfter;
+    String tempPass = "";
+    private int[] passButtonIds = {
             R.id.lbtn1,
             R.id.lbtn2,
             R.id.lbtn3,
@@ -29,14 +33,13 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
             R.id.lbtn9,
             R.id.lbtn0
     };
-
     private TextView textViewDot, textViewHAHA;
     private Button buttonTick;
     private ImageButton imageButtonDelete;
+    private RelativeLayout relativeLayoutBackground;
 
     private String passString = "", realPass = "";
     private String status = "";
-
     //
     private String checkStatus = "check";
     private String setStatus = "set";
@@ -45,7 +48,6 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
     private String changeStatus = "change";
     private String changeStatus1 = "change1";
     private String changeStatus2 = "change2";
-    private static Class classToGoAfter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +68,13 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
         }
     }
 
-    String tempPass = "";
-
     private void initViews() {
-        textViewHAHA = (TextView) findViewById(R.id.haha_text);
-        textViewDot = (TextView) findViewById(R.id.dotText);
-        buttonTick = (Button) findViewById(R.id.lbtnTick);
-        imageButtonDelete = (ImageButton) findViewById(R.id.lbtnDelete);
+        textViewHAHA = findViewById(R.id.haha_text);
+        textViewDot = findViewById(R.id.dotText);
+        buttonTick = findViewById(R.id.lbtnTick);
+        imageButtonDelete = findViewById(R.id.lbtnDelete);
+        relativeLayoutBackground = findViewById(R.id.background_layout);
+        relativeLayoutBackground.setBackgroundColor(EasyLock.backgroundColor);
 
         imageButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +181,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
         });
 
         for (int i = 0; i < passButtonIds.length; i++) {
-            final Button button = (Button) findViewById(passButtonIds[i]);
+            final Button button = findViewById(passButtonIds[i]);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -206,7 +208,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
 
     @Override
     public void activityClass(Class activityClassToGo) {
-        this.classToGoAfter = activityClassToGo;
+        classToGoAfter = activityClassToGo;
     }
 
     @Override
