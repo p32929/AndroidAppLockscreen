@@ -14,7 +14,7 @@ public class MainActivity extends LockscreenHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EasyLock.setBackgroundColor(Color.BLUE);
+        // EasyLock.setBackgroundColor(Color.BLUE);
         EasyLock.checkPassword(this);
     }
 
