@@ -66,6 +66,7 @@ Step 2: Add ```EasyLock.checkPassword(this);``` in your ```MainActivity```'s ```
 * To check password, call ```EasyLock.checkPassword();```
 * To change password, call ```EasyLock.changePassword();```
 * To disable password, call ```EasyLock.disablePassword();```
+* To see if clicked on Forgot password call ```EasyLock.forgotPassword()``` with a ```new View.OnClickListener()```
 
 Check out the app in the repository for more info :)
 Enjoy...
