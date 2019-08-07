@@ -3,6 +3,7 @@ package p32929.easypasscodelock.Utils;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.view.View;
 
 import p32929.easypasscodelock.Activities.LockscreenActivity;
 import p32929.easypasscodelock.Interfaces.ActivityChanger;
@@ -14,6 +15,7 @@ import p32929.easypasscodelock.Interfaces.ActivityChanger;
 public class EasyLock {
     private static ActivityChanger activityChanger;
     public static int backgroundColor = Color.parseColor("#019689");
+    public static View.OnClickListener onClickListener;
 
     private static void init(Context context) {
         FayazSP.init(context);
@@ -57,6 +59,10 @@ public class EasyLock {
 
     public static void setBackgroundColor(int backgroundColor) {
         EasyLock.backgroundColor = backgroundColor;
+    }
+
+    public static void forgotPassword(View.OnClickListener onClickListener) {
+        EasyLock.onClickListener = onClickListener;
     }
 
 }

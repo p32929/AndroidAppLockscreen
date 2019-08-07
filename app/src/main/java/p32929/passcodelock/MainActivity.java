@@ -1,8 +1,8 @@
 package p32929.passcodelock;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import p32929.easypasscodelock.Utils.EasyLock;
 import p32929.easypasscodelock.Utils.LockscreenHandler;
@@ -16,6 +16,13 @@ public class MainActivity extends LockscreenHandler {
 
         // EasyLock.setBackgroundColor(Color.BLUE);
         EasyLock.checkPassword(this);
+
+        EasyLock.forgotPassword(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Clicked on forgot password", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -34,4 +41,6 @@ public class MainActivity extends LockscreenHandler {
     public void checkPass(View view) {
         EasyLock.checkPassword(this);
     }
+
+
 }

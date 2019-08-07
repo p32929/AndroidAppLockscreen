@@ -261,7 +261,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/forgot_password_margin_bottom"
-        android:onClick="forgotPassword"
         android:text="Forgot password?"
         android:textAlignment="center"
         android:textColor="#FFFFFF"

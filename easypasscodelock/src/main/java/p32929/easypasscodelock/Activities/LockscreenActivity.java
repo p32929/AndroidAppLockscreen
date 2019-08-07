@@ -33,7 +33,7 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
             R.id.lbtn9,
             R.id.lbtn0
     };
-    private TextView textViewDot, textViewHAHA;
+    private TextView textViewDot, textViewHAHA, textViewForgotPassword;
     private Button buttonTick;
     private ImageButton imageButtonDelete;
     private RelativeLayout relativeLayoutBackground;
@@ -71,10 +71,13 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
     private void initViews() {
         textViewHAHA = findViewById(R.id.haha_text);
         textViewDot = findViewById(R.id.dotText);
+        textViewForgotPassword = findViewById(R.id.forgot_pass_textview);
         buttonTick = findViewById(R.id.lbtnTick);
         imageButtonDelete = findViewById(R.id.lbtnDelete);
         relativeLayoutBackground = findViewById(R.id.background_layout);
         relativeLayoutBackground.setBackgroundColor(EasyLock.backgroundColor);
+
+        textViewForgotPassword.setOnClickListener(EasyLock.onClickListener);
 
         imageButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override

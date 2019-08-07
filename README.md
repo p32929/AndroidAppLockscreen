@@ -23,7 +23,7 @@ Add the dependency
 
 ```
 dependencies {
-    implementation 'com.github.p32929:AndroidAppLockscreen:1.1'
+    implementation 'com.github.p32929:AndroidAppLockscreen:1.2'
 }
 ```
 
