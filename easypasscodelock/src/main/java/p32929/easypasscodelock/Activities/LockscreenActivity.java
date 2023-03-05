@@ -71,117 +71,111 @@ public class LockscreenActivity extends LockscreenHandler implements ActivityCha
         textViewHAHA = findViewById(R.id.span_text);
         textViewDot = findViewById(R.id.dotText);
         TextView textViewForgotPassword = findViewById(R.id.forgot_pass_textview);
-        Button buttonTick = findViewById(R.id.lbtnEnter);
+        Button buttonEnter = findViewById(R.id.lbtnEnter);
         ImageButton imageButtonDelete = findViewById(R.id.lbtnDelete);
         RelativeLayout relativeLayoutBackground = findViewById(R.id.background_layout);
         relativeLayoutBackground.setBackgroundColor(EasyLock.backgroundColor);
 
         textViewForgotPassword.setOnClickListener(EasyLock.onClickListener);
 
-        imageButtonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (passString.length() > 0)
-                    passString = passString.substring(0, passString.length() - 1);
-                textViewDot.setText(passString);
-            }
+        imageButtonDelete.setOnClickListener(view -> {
+            if (passString.length() > 0)
+                passString = passString.substring(0, passString.length() - 1);
+            textViewDot.setText(passString);
         });
 
-        buttonTick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        buttonEnter.setOnClickListener(view -> {
+
+            //
+            switch (status) {
+                case checkStatus:
+                    if (passString != null && passString.equals(realPass)) {
+                        finish();
+                    } else {
+                        passString = "";
+                        textViewDot.setText(passString);
+                        Toast.makeText(this, getString(R.string.incorrect_password_txt), Toast.LENGTH_SHORT).show();
+                    }
+                    break;
 
                 //
-                switch (status) {
-                    case checkStatus:
-                        if (passString.equals(realPass)) {
-                            finish();
-                        } else {
-                            passString = "";
-                            textViewDot.setText(passString);
-                            Toast.makeText(LockscreenActivity.this, getString(R.string.incorrect_password_txt), Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-
+                case setStatus:
                     //
-                    case setStatus:
-                        //
+                    tempPass = passString;
+                    passString = "";
+                    status = setStatus1;
+
+                    textViewHAHA.setText(R.string.confirm_password_txt);
+                    textViewDot.setText(passString);
+                    break;
+
+                //
+                case setStatus1:
+                    //
+                    if (passString.equals(tempPass)) {
+                        EasylockSP.put("password", passString);
+                        Toast.makeText(LockscreenActivity.this, getString(R.string.password_is_set_txt), Toast.LENGTH_SHORT).show();
+                        gotoActivity();
+                    } else {
+
                         tempPass = passString;
                         passString = "";
-                        status = setStatus1;
+                        tempPass = "";
+                        status = setStatus;
 
-                        textViewHAHA.setText(R.string.confirm_password_txt);
                         textViewDot.setText(passString);
-                        break;
+                        textViewHAHA.setText(R.string.enter_a_new_password_txt);
+                        Toast.makeText(LockscreenActivity.this, getString(R.string.please_enter_a_new_password_again_txt), Toast.LENGTH_SHORT).show();
+                    }
+                    break;
 
-                    //
-                    case setStatus1:
-                        //
-                        if (passString.equals(tempPass)) {
-                            EasylockSP.put("password", passString);
-                            Toast.makeText(LockscreenActivity.this, getString(R.string.password_is_set_txt), Toast.LENGTH_SHORT).show();
-                            gotoActivity();
-                        } else {
-
-                            tempPass = passString;
-                            passString = "";
-                            tempPass = "";
-                            status = setStatus;
-
-                            textViewDot.setText(passString);
-                            textViewHAHA.setText(R.string.enter_a_new_password_txt);
-                            Toast.makeText(LockscreenActivity.this, getString(R.string.please_enter_a_new_password_again_txt), Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-
-                    //
-                    case changeStatus:
-                        if (passString.equals(realPass)) {
-                            tempPass = passString;
-                            passString = "";
-                            tempPass = "";
-                            status = changeStatus1;
-
-                            textViewHAHA.setText(R.string.enter_a_new_password_txt);
-                            textViewDot.setText(passString);
-                        } else {
-                            passString = "";
-                            textViewDot.setText(passString);
-                            Toast.makeText(LockscreenActivity.this, getString(R.string.please_enter_current_password_txt), Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-
-                    //
-                    case changeStatus1:
+                //
+                case changeStatus:
+                    if (passString.equals(realPass)) {
                         tempPass = passString;
                         passString = "";
-                        status = changeStatus2;
+                        tempPass = "";
+                        status = changeStatus1;
 
-                        textViewHAHA.setText(R.string.confirm_password_txt);
+                        textViewHAHA.setText(R.string.enter_a_new_password_txt);
                         textViewDot.setText(passString);
-                        break;
+                    } else {
+                        passString = "";
+                        textViewDot.setText(passString);
+                        Toast.makeText(LockscreenActivity.this, getString(R.string.please_enter_current_password_txt), Toast.LENGTH_SHORT).show();
+                    }
+                    break;
 
-                    //
-                    case changeStatus2:
-                        if (passString.equals(tempPass)) {
-                            EasylockSP.put("password", passString);
-                            Toast.makeText(LockscreenActivity.this, getString(R.string.password_changed_txt), Toast.LENGTH_SHORT).show();
-                            gotoActivity();
-                        } else {
+                //
+                case changeStatus1:
+                    tempPass = passString;
+                    passString = "";
+                    status = changeStatus2;
 
-                            tempPass = passString;
-                            passString = "";
-                            tempPass = "";
-                            status = changeStatus1;
+                    textViewHAHA.setText(R.string.confirm_password_txt);
+                    textViewDot.setText(passString);
+                    break;
 
-                            textViewDot.setText(passString);
-                            textViewHAHA.setText(R.string.enter_a_new_password_txt);
-                            Toast.makeText(LockscreenActivity.this, getString(R.string.please_enter_a_new_password_again_txt), Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                }
+                //
+                case changeStatus2:
+                    if (passString.equals(tempPass)) {
+                        EasylockSP.put("password", passString);
+                        Toast.makeText(LockscreenActivity.this, getString(R.string.password_changed_txt), Toast.LENGTH_SHORT).show();
+                        gotoActivity();
+                    } else {
 
+                        tempPass = passString;
+                        passString = "";
+                        tempPass = "";
+                        status = changeStatus1;
+
+                        textViewDot.setText(passString);
+                        textViewHAHA.setText(R.string.enter_a_new_password_txt);
+                        Toast.makeText(LockscreenActivity.this, getString(R.string.please_enter_a_new_password_again_txt), Toast.LENGTH_SHORT).show();
+                    }
+                    break;
             }
+
         });
 
         for (int passButtonId : passButtonIds) {

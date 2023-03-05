@@ -1,0 +1,14 @@
+<resources>
+    <string name="enter_a_new_password_txt">Insira uma nova senha</string>
+    <string name="confirm_password_txt">Confirme sua senha</string>
+    <string name="password_changed_txt">Senha alterada</string>
+    <string name="please_enter_a_new_password_again_txt">Digite uma nova senha novamente</string>
+    <string name="max_8_characters_txt">Máximo de 8 caracteres</string>
+    <string name="please_enter_current_password_txt">Digite a senha atual</string>
+    <string name="password_is_set_txt">A senha está definida</string>
+    <string name="incorrect_password_txt">Senha incorreta</string>
+    <string name="password_disabled_txt">Senha desativada</string>
+    <string name="enter_your_password_txt">Coloque sua senha</string>
+    <string name="clear_txt">Excluir</string>
+    <string name="forgot_password_txt">Esqueceu sua senha \?</string>
+</resources>

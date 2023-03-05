@@ -56,7 +56,6 @@
                 android:height="48dp"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:text="Dot"
                 android:textAlignment="textEnd"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
@@ -67,7 +66,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
-                android:contentDescription="@string/delete_txt"
+                android:contentDescription="@string/clear_txt"
                 android:src="@mipmap/ic_delete_forever_white_24dp" />
 
         </LinearLayout>

@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class LockscreenHandler extends AppCompatActivity implements ComponentCallbacks2 {
-    private static boolean wentToBg = false;
+    private static boolean WentToBackground = false;
     private final String TAG = "EasyLock";
     private String packageName = "";
 
@@ -23,8 +23,7 @@ public class LockscreenHandler extends AppCompatActivity implements ComponentCal
         super.onTrimMemory(i);
         ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
-        Log.d("topActivity", "CURRENT Activity ::"
-                + taskInfo.get(0).topActivity.getClassName());
+        Log.d("Activity", "CURRENT Activity ::" + taskInfo.get(0).topActivity.getClassName());
 
         if (taskInfo.size() > 0) {
             ComponentName componentInfo = taskInfo.get(0).topActivity;
@@ -32,8 +31,8 @@ public class LockscreenHandler extends AppCompatActivity implements ComponentCal
         }
         if (!packageName.equals(getPackageName()) && i == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
             // We're in the Background
-            wentToBg = true;
-            Log.d(TAG, "wentToBg: " + wentToBg);
+            WentToBackground = true;
+            Log.d(TAG, "WentToBackground: " + WentToBackground);
         }
     }
 
@@ -41,10 +40,10 @@ public class LockscreenHandler extends AppCompatActivity implements ComponentCal
     protected void onResume() {
         super.onResume();
 
-        if (wentToBg && EasylockSP.getString("password", null) != null) {
+        if (WentToBackground && EasylockSP.getString("password", null) != null) {
             // We're in the foreground & password != null
-            wentToBg = false;
-            Log.d(TAG, "wentToBg: " + wentToBg);
+            WentToBackground = false;
+            Log.d(TAG, "WentToBackground: " + WentToBackground);
 
             EasyLock.checkPassword(this);
         }

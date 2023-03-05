@@ -1,5 +1,6 @@
 package p32929.easypasscodelock.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -18,24 +19,29 @@ public class EasylockSP {
     }
 
     //
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, boolean value) {
-        sharedPreferences.edit().putBoolean(title, value).apply();
+        sharedPreferences.edit().putBoolean(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, float value) {
-        sharedPreferences.edit().putFloat(title, value).apply();
+        sharedPreferences.edit().putFloat(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, int value) {
-        sharedPreferences.edit().putInt(title, value).apply();
+        sharedPreferences.edit().putInt(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, long value) {
-        sharedPreferences.edit().putLong(title, value).apply();
+        sharedPreferences.edit().putLong(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, String value) {
-        sharedPreferences.edit().putString(title, value).apply();
+        sharedPreferences.edit().putString(title, value).commit();
     }
 
     //
@@ -61,7 +67,7 @@ public class EasylockSP {
 
     //
     public static void clearAll() {
-        sharedPreferences.edit().clear().apply();
+        sharedPreferences.edit().clear().commit();
     }
 
 }

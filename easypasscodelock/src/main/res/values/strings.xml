@@ -10,6 +10,6 @@
     <string name="incorrect_password_txt">Incorrect Password</string>
     <string name="password_disabled_txt">Password Disabled</string>
     <string name="enter_your_password_txt">Enter Your Password</string>
-    <string name="delete_txt">Delete</string>
+    <string name="clear_txt">Clear</string>
     <string name="forgot_password_txt">Forgot password ?</string>
 </resources>
