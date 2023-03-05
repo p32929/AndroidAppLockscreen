@@ -3,7 +3,7 @@
     package="p32929.easypasscodelock">
 
     <application>
-        <activity android:name=".Activities.LockscreenActivity"></activity>
+        <activity android:name=".Activities.LockscreenActivity" />
     </application>
 
 </manifest>

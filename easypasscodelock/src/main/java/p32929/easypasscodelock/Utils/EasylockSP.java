@@ -7,15 +7,14 @@ import android.content.SharedPreferences;
  * Created by p32929 on 7/17/2018.
  */
 
-public class FayazSP {
+public class EasylockSP {
     public static SharedPreferences sharedPreferences;
 
     //
-    public static SharedPreferences init(Context context) {
+    public static void init(Context context) {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences("Lockscreen", Context.MODE_PRIVATE);
         }
-        return sharedPreferences;
     }
 
     //
@@ -38,7 +37,6 @@ public class FayazSP {
     public static void put(String title, String value) {
         sharedPreferences.edit().putString(title, value).apply();
     }
-
 
     //
     public static boolean getBoolean(String title, boolean defaultValue) {
@@ -63,7 +61,7 @@ public class FayazSP {
 
     //
     public static void clearAll() {
-        sharedPreferences.edit().clear().commit();
+        sharedPreferences.edit().clear().apply();
     }
 
 }

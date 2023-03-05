@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_a_new_password_txt">Entrez un nouveau mot de passe</string>
+    <string name="confirm_password_txt">Confirmez le mot de passe</string>
+    <string name="password_changed_txt">Mot de passe changé</string>
+    <string name="please_enter_a_new_password_again_txt">Entrez un nouveau mot de passe encore une fois</string>
+    <string name="max_8_characters_txt">Maximum 8 numéros</string>
+    <string name="please_enter_current_password_txt">Entrez le mot de passe actuel</string>
+    <string name="password_is_set_txt">Mot de passe enrégistre avec succès</string>
+    <string name="incorrect_password_txt">Mot de passe incorrect</string>
+    <string name="password_disabled_txt">Mot de passe désactivé</string>
+    <string name="enter_your_password_txt">Entrez votre mot de passe</string>
+    <string name="delete_txt">Effacer</string>
+    <string name="forgot_password_txt">Mot de passe oublié ?</string>
+</resources>

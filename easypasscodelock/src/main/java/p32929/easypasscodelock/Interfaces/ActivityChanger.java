@@ -5,5 +5,5 @@ package p32929.easypasscodelock.Interfaces;
  */
 
 public interface ActivityChanger {
-    void activityClass(Class activityClassToGo);
+    void activityClass(@SuppressWarnings("rawtypes") Class activityClassToGo);
 }

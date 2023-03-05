@@ -1,7 +1,7 @@
 <resources>
-	<!--Lockscreen-->
+    <!--Lockscreen-->
 
-	<dimen name="forgot_password_margin_bottom">25dp</dimen>
-	<dimen name="number_pad_margin_top">8dp</dimen>
-	<dimen name="number_pad_parent_margin">25dp</dimen>
+    <dimen name="forgot_password_margin_bottom">25dp</dimen>
+    <dimen name="number_pad_margin_top">8dp</dimen>
+    <dimen name="number_pad_parent_margin">25dp</dimen>
 </resources>
