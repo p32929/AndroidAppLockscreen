@@ -12,13 +12,14 @@ import p32929.easypasscodelock.Interfaces.ActivityChanger;
  * Created by p32929 on 7/17/2018.
  */
 
+@SuppressWarnings("rawtypes")
 public class EasyLock {
-    private static ActivityChanger activityChanger;
-    public static int backgroundColor = Color.parseColor("#019689");
+    public static int backgroundColor = Color.parseColor("#000000");
     public static View.OnClickListener onClickListener;
+    private static ActivityChanger activityChanger;
 
     private static void init(Context context) {
-        FayazSP.init(context);
+        EasylockSP.init(context);
         if (activityChanger == null) {
             activityChanger = new LockscreenActivity();
         }
@@ -50,7 +51,7 @@ public class EasyLock {
 
     public static void checkPassword(Context context) {
         init(context);
-        if (FayazSP.getString("password", null) != null) {
+        if (EasylockSP.getString("password", null) != null) {
             Intent intent = new Intent(context, LockscreenActivity.class);
             intent.putExtra("passStatus", "check");
             context.startActivity(intent);

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/background_layout"
-    android:background="#019689"
+    android:background="#000000"
     android:orientation="vertical"
     tools:context="p32929.easypasscodelock.Activities.LockscreenActivity">
 
@@ -14,8 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/input_password_layout"
         android:layout_centerHorizontal="true"
+        android:contentDescription="Logo"
         android:src="@drawable/lock_icon"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:ignore="HardcodedText"
+        tools:visibility="visible" />
 
 
     <LinearLayout
@@ -28,13 +31,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/haha_text"
+            android:id="@+id/span_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/input_password_layout"
             android:layout_centerHorizontal="true"
             android:layout_margin="16dp"
-            android:text="Enter Your Password"
+            android:text="@string/enter_your_password_txt"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
@@ -50,7 +53,9 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
+                android:height="48dp"
                 android:inputType="textPassword"
+                android:minHeight="48dp"
                 android:textAlignment="textEnd"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
@@ -58,9 +63,10 @@
             <ImageButton
                 android:id="@+id/lbtnDelete"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
+                android:contentDescription="@string/clear_txt"
                 android:src="@mipmap/ic_delete_forever_white_24dp" />
 
         </LinearLayout>
@@ -238,7 +244,7 @@
                 android:textSize="24sp" />
 
             <Button
-                android:id="@+id/lbtnTick"
+                android:id="@+id/lbtnEnter"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -261,7 +267,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/forgot_password_margin_bottom"
-        android:text="Forgot password?"
+        android:text="@string/forgot_password_txt"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"

@@ -1,5 +1,6 @@
 package p32929.easypasscodelock.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -7,38 +8,41 @@ import android.content.SharedPreferences;
  * Created by p32929 on 7/17/2018.
  */
 
-public class FayazSP {
+public class EasylockSP {
     public static SharedPreferences sharedPreferences;
 
     //
-    public static SharedPreferences init(Context context) {
+    public static void init(Context context) {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences("Lockscreen", Context.MODE_PRIVATE);
         }
-        return sharedPreferences;
     }
 
     //
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, boolean value) {
-        sharedPreferences.edit().putBoolean(title, value).apply();
+        sharedPreferences.edit().putBoolean(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, float value) {
-        sharedPreferences.edit().putFloat(title, value).apply();
+        sharedPreferences.edit().putFloat(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, int value) {
-        sharedPreferences.edit().putInt(title, value).apply();
+        sharedPreferences.edit().putInt(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, long value) {
-        sharedPreferences.edit().putLong(title, value).apply();
+        sharedPreferences.edit().putLong(title, value).commit();
     }
 
+    @SuppressLint("ApplySharedPref")
     public static void put(String title, String value) {
-        sharedPreferences.edit().putString(title, value).apply();
+        sharedPreferences.edit().putString(title, value).commit();
     }
-
 
     //
     public static boolean getBoolean(String title, boolean defaultValue) {

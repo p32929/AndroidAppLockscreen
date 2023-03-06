@@ -1,0 +1,14 @@
+<resources>
+    <string name="enter_a_new_password_txt">Inserire una nuova password</string>
+    <string name="confirm_password_txt">Conferma password</string>
+    <string name="password_changed_txt">Password cambiata</string>
+    <string name="please_enter_a_new_password_again_txt">Inserisci di nuovo una nuova password</string>
+    <string name="max_8_characters_txt">Massimo 8 caratteri</string>
+    <string name="please_enter_current_password_txt">Inserisci la password corrente</string>
+    <string name="password_is_set_txt">La password è impostata</string>
+    <string name="incorrect_password_txt">Password errata</string>
+    <string name="password_disabled_txt">Password disabilitata</string>
+    <string name="enter_your_password_txt">Inserisci la tua password</string>
+    <string name="clear_txt">Eliminare</string>
+    <string name="forgot_password_txt">Ha dimenticato la password ?</string>
+</resources>

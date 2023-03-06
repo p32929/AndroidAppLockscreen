@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_a_new_password_txt">Geben Sie ein neues Kennwort ein</string>
+    <string name="confirm_password_txt">Bestätigen Sie das Passwort</string>
+    <string name="password_changed_txt">Passwort geändert</string>
+    <string name="please_enter_a_new_password_again_txt">Geben Sie erneut ein neues Passwort ein</string>
+    <string name="max_8_characters_txt">Maximal 8 Zahlen</string>
+    <string name="please_enter_current_password_txt">Aktuelles Passwort eingeben</string>
+    <string name="password_is_set_txt">Passwort erfolgreich registriert</string>
+    <string name="incorrect_password_txt">falsches Passwort</string>
+    <string name="password_disabled_txt">Passwort deaktiviert</string>
+    <string name="enter_your_password_txt">Geben Sie Ihr Passwort ein</string>
+    <string name="clear_txt">Löschen</string>
+    <string name="forgot_password_txt">Haben Sie Ihr Passwort vergessen ?</string>
+</resources>
