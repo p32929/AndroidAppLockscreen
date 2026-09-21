@@ -62,7 +62,7 @@ Enjoy...
 
 ## Support
 
-If you like my works and want to support me/my works, feel free to support or donate. My payment details can be found here: https://p32929.github.io/SendMoney2Me/
+If you like my works and want to support me/my works, feel free to support or donate. My payment details can be found here: https://p32929.github.io/SendMoney2MeV1/
 
 ## License
 
