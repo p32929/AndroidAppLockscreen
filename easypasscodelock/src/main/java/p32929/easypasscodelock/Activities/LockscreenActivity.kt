@@ -36,6 +36,13 @@ class LockscreenActivity : AppCompatActivity() {
         if (EasyLock.themeRes != 0) setTheme(EasyLock.themeRes) else DynamicColors.applyToActivityIfAvailable(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.easylock_activity)
+        // Dark status bar icons on a light theme, light icons on a dark one.
+        val night = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) ==
+            android.content.res.Configuration.UI_MODE_NIGHT_YES
+        androidx.core.view.WindowCompat.getInsetsController(window, window.decorView).apply {
+            isAppearanceLightStatusBars = !night
+            isAppearanceLightNavigationBars = !night
+        }
         EasyLock.init(this)
 
         status = intent.getStringExtra(EasyLock.EXTRA_STATUS) ?: "check"
