@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Override Theme.EasyLock in your app, or call EasyLock.setTheme(), to use your own colours. -->
+    <style name="Base.Theme.EasyLock" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Theme.EasyLock" parent="Base.Theme.EasyLock" />
+
+    <dimen name="easylock_key">72dp</dimen>
+    <dimen name="easylock_gap">10dp</dimen>
+    <dimen name="easylock_dot">14dp</dimen>
+</resources>

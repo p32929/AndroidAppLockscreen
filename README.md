@@ -1,47 +1,75 @@
 # AndroidAppLockscreen
 
-An easily implementable, clean, minimal lockscreen library for Android apps — PIN entry, set/change/disable password, custom background colour. Design inspired by [Diaro](https://play.google.com/store/apps/details?id=com.pixelcrater.Diaro).
+A passcode lock screen for Android apps. Add it in a few lines, and your app asks for a 4 to 8 digit passcode when it opens and every time people come back to it. People can set, change and turn off the passcode, and unlock with their fingerprint if you allow it.
 
-Image1                     |  Image2
-:-------------------------:|:-------------------------:
-![screenshot_1532237234](https://user-images.githubusercontent.com/6418354/43042536-7e991234-8da2-11e8-8d17-f15c963a6ad2.png)  | ![screenshot_1532237239](https://user-images.githubusercontent.com/6418354/43042543-a5326274-8da2-11e8-8a96-31e84eef0c98.png)
+## Screenshots
 
-## Installation
+Light                                  | Dark
+:-------------------------------------:|:-------------------------------------:
+![Light](docs/screenshots/light.png)   | ![Dark](docs/screenshots/dark.png)
 
-Add JitPack to your root `build.gradle`:
+## What you get
 
-```gradle
-allprojects {
-  repositories {
-    maven { url 'https://jitpack.io' }
-  }
+1. **A clean Material 3 lock screen** that follows light and dark mode, and uses the phone's own colours on Android 12 and newer.
+2. **Your own look if you want it:** pass your theme with `EasyLock.setTheme()`, or set a background colour.
+3. **Smooth feedback:** dots fill in as you type, shake on a wrong passcode, and every key gives a small vibration.
+4. **Fingerprint or face unlock,** turned on with one line.
+5. **Locks again when people come back** to your app after leaving it.
+6. **Passcodes are stored as a salted hash,** not as plain text.
+7. **Works from Kotlin and Java,** on Android 5.0 (API 21) and newer.
+
+## Install
+
+Add JitPack to `settings.gradle.kts`:
+
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
 }
 ```
 
-Add the dependency:
+Add the library:
 
-```gradle
+```kotlin
 dependencies {
-    implementation 'com.github.p32929:AndroidAppLockscreen:1.2'
+    implementation("com.github.p32929:AndroidAppLockscreen:2.0.0")
 }
 ```
 
 ## Usage
 
-Two steps:
+1. Extend your activities from `LockscreenHandler`.
+2. Call `EasyLock.checkPassword(this)` in `onCreate` of the activity your app opens first.
 
-1. Extend all your `Activity` classes from `LockscreenHandler`
-2. Call `EasyLock.checkPassword(this);` in the `onCreate` of whichever activity starts first
+Kotlin:
+
+```kotlin
+class MainActivity : LockscreenHandler() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) EasyLock.checkPassword(this)
+
+        setButton.setOnClickListener { EasyLock.setPassword(this) }
+    }
+}
+```
+
+Java:
 
 ```java
 public class MainActivity extends LockscreenHandler {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EasyLock.checkPassword(this);
+        if (savedInstanceState == null) EasyLock.checkPassword(this);
     }
 }
 ```
@@ -50,15 +78,29 @@ public class MainActivity extends LockscreenHandler {
 
 | Call | What it does |
 |---|---|
-| `EasyLock.setPassword()` | Set a new password |
-| `EasyLock.checkPassword()` | Show the lockscreen and verify |
-| `EasyLock.changePassword()` | Change the existing password |
-| `EasyLock.disablePassword()` | Turn the lock off |
-| `EasyLock.setBackgroundColor()` | Set the lockscreen background colour |
-| `EasyLock.forgotPassword(new View.OnClickListener())` | Handle taps on "Forgot password" |
+| `EasyLock.setPassword(context)` | Asks for a new passcode twice and saves it |
+| `EasyLock.checkPassword(context)` | Shows the lock screen, if a passcode is set |
+| `EasyLock.changePassword(context)` | Asks for the current passcode, then a new one |
+| `EasyLock.disablePassword(context)` | Asks for the current passcode, then turns the lock off |
+| `EasyLock.isPasswordSet(context)` | Tells you if a passcode is set |
+| `EasyLock.setBiometricEnabled(true)` | Lets people unlock with fingerprint or face |
+| `EasyLock.forgotPassword { ... }` | Shows a "Forgot passcode?" button that runs your code |
+| `EasyLock.setTheme(R.style.MyTheme)` | Uses your own Material 3 theme on the lock screen |
+| `EasyLock.setBackgroundColor(color)` | Sets a background colour |
 
-Check out the `app` module in this repository for a full working example :)
-Enjoy...
+`setPassword`, `changePassword` and `disablePassword` can also take an activity class to open when they finish, like in 1.x: `EasyLock.setPassword(this, MainActivity::class.java)`. Without it, the lock screen just closes and you are back where you were.
+
+See the `app` module for a full working sample.
+
+## Migrating from 1.x
+
+1. Update the version to `2.0.0`. Your 1.x calls keep working, and saved passcodes still unlock.
+2. The library now needs Android 5.0 (API 21) or newer, and a Material 3 or Material Components theme if you pass your own with `setTheme()`.
+3. The lock screen uses its theme colours instead of a black background. Call `EasyLock.setBackgroundColor(Color.BLACK)` to keep the old look.
+4. `disablePassword()` now asks for the current passcode first, so the lock can't be turned off by anyone holding the phone.
+5. Passcodes must be 4 to 8 digits.
+6. The `ActivityChanger` interface is gone. It was only used inside the library.
+7. Old 1.x versions stay on JitPack, so nothing breaks if you don't update.
 
 ## Support
 
